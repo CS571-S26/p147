@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { LOCATIONS } from './data/locations'
-import Header from './components/Header'
-import SearchBar from './components/SearchBar'
-import FilterPanel from './components/FilterPanel'
-import LocationCard from './components/LocationCard'
+import NavBar from './components/NavBar'
+import HomePage from './components/HomePage'
+import FavoritesPage from './components/FavoritesPage'
+import AboutPage from './components/AboutPage'
 import LocationDetail from './components/LocationDetail'
 import styles from './App.module.css'
 
@@ -87,61 +88,64 @@ export default function App() {
     return list
   }, [query, filters, sort, favorites, occupancy])
 
+  const favoriteLocations = useMemo(
+    () => LOCATIONS.filter(loc => favorites.includes(loc.id)),
+    [favorites]
+  )
+
   return (
-    <div className={styles.app}>
-      <Header favoriteCount={favorites.length} />
+    <HashRouter>
+      <div className={styles.app}>
+        <NavBar favoriteCount={favorites.length} />
 
-      <main className={styles.main}>
-        <div className={styles.controls}>
-          <SearchBar query={query} onChange={setQuery} />
-        </div>
-
-        <FilterPanel
-          filters={filters}
-          onFilterChange={setFilters}
-          sort={sort}
-          onSortChange={setSort}
-          resultCount={filtered.length}
-        />
-
-        {filtered.length === 0 ? (
-          <div className={styles.empty}>
-            <span className={styles.emptyIcon}>🔍</span>
-            <p>No study spaces match your filters.</p>
-            <button className={styles.emptyReset} onClick={() => { setQuery(''); setFilters({ noise: 'all', amenities: [], favoritesOnly: false }) }}>
-              Clear all filters
-            </button>
-          </div>
-        ) : (
-          <div className={styles.grid}>
-            {filtered.map(loc => (
-              <LocationCard
-                key={loc.id}
-                location={loc}
-                isFavorite={favorites.includes(loc.id)}
-                occupancy={occupancy[loc.id]}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                query={query}
+                onQueryChange={setQuery}
+                filters={filters}
+                onFilterChange={setFilters}
+                sort={sort}
+                onSortChange={setSort}
+                filtered={filtered}
+                favorites={favorites}
+                occupancy={occupancy}
                 onSelect={setSelected}
                 onToggleFavorite={toggleFavorite}
               />
-            ))}
-          </div>
-        )}
-      </main>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <FavoritesPage
+                favoriteLocations={favoriteLocations}
+                occupancy={occupancy}
+                onSelect={setSelected}
+                onToggleFavorite={toggleFavorite}
+              />
+            }
+          />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
 
-      {selected && (
-        <LocationDetail
-          location={selected}
-          isFavorite={favorites.includes(selected.id)}
-          occupancy={occupancy[selected.id]}
-          checkedIn={!!checkIns[selected.id]}
-          comments={comments[selected.id] || []}
-          onClose={() => setSelected(null)}
-          onToggleFavorite={toggleFavorite}
-          onCheckIn={handleCheckIn}
-          onCheckOut={handleCheckOut}
-          onAddComment={handleAddComment}
-        />
-      )}
-    </div>
+        {selected && (
+          <LocationDetail
+            location={selected}
+            isFavorite={favorites.includes(selected.id)}
+            occupancy={occupancy[selected.id]}
+            checkedIn={!!checkIns[selected.id]}
+            comments={comments[selected.id] || []}
+            onClose={() => setSelected(null)}
+            onToggleFavorite={toggleFavorite}
+            onCheckIn={handleCheckIn}
+            onCheckOut={handleCheckOut}
+            onAddComment={handleAddComment}
+          />
+        )}
+      </div>
+    </HashRouter>
   )
 }

@@ -1,0 +1,62 @@
+.navbar {
+  background-color: #c5050c;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.brand:hover {
+  color: #f7f7f7 !important;
+}
+
+.logo {
+  font-size: 1.3rem;
+}
+
+.brandText {
+  letter-spacing: 0.01em;
+}
+
+.toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.85rem !important;
+  border-radius: 6px;
+  transition: color 0.12s, background 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.link:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.active {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  font-weight: 700;
+}
+
+.badge {
+  font-size: 0.72rem;
+  padding: 0.25em 0.5em;
+}
