@@ -1,10 +1,11 @@
 import { AMENITY_LABELS, NOISE_LABELS } from '../data/locations'
 import OccupancyMeter from './OccupancyMeter'
+import { formatDistance } from '../hooks/useGeolocation'
 import styles from './LocationCard.module.css'
 
 const NOISE_ICON = { quiet: '🤫', moderate: '💬', collaborative: '🗣️' }
 
-export default function LocationCard({ location, isFavorite, occupancy, onSelect, onToggleFavorite }) {
+export default function LocationCard({ location, isFavorite, occupancy, distance, onSelect, onToggleFavorite }) {
   return (
     <article className={styles.card} onClick={() => onSelect(location)} tabIndex={0}
       onKeyDown={e => e.key === 'Enter' && onSelect(location)}
@@ -25,6 +26,10 @@ export default function LocationCard({ location, isFavorite, occupancy, onSelect
 
       <div className={styles.body}>
         <h2 className={styles.name}>{location.name}</h2>
+
+        {distance != null && (
+          <span className={styles.distance}>📍 {formatDistance(distance)} away</span>
+        )}
 
         <div className={styles.noise}>
           <span>{NOISE_ICON[location.noiseLevel]}</span>

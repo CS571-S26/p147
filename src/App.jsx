@@ -5,7 +5,9 @@ import NavBar from './components/NavBar'
 import HomePage from './components/HomePage'
 import FavoritesPage from './components/FavoritesPage'
 import AboutPage from './components/AboutPage'
+import MapPage from './components/MapPage'
 import LocationDetail from './components/LocationDetail'
+import useGeolocation from './hooks/useGeolocation'
 import styles from './App.module.css'
 
 const STORAGE_KEY_FAVORITES = 'studyspotter_favorites'
@@ -45,6 +47,7 @@ export default function App() {
   const [selected, setSelected] = useState(null)
 
   const occupancy = useOccupancy(checkIns)
+  const { distances } = useGeolocation(LOCATIONS)
 
   useEffect(() => { localStorage.setItem(STORAGE_KEY_FAVORITES, JSON.stringify(favorites)) }, [favorites])
   useEffect(() => { localStorage.setItem(STORAGE_KEY_COMMENTS, JSON.stringify(comments)) }, [comments])
@@ -112,6 +115,7 @@ export default function App() {
                 filtered={filtered}
                 favorites={favorites}
                 occupancy={occupancy}
+                distances={distances}
                 onSelect={setSelected}
                 onToggleFavorite={toggleFavorite}
               />
@@ -129,6 +133,17 @@ export default function App() {
             }
           />
           <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/map"
+            element={
+              <MapPage
+                occupancy={occupancy}
+                favorites={favorites}
+                onSelect={setSelected}
+                onToggleFavorite={toggleFavorite}
+              />
+            }
+          />
         </Routes>
 
         {selected && (

@@ -8,7 +8,7 @@ export default function HomePage({
   query, onQueryChange,
   filters, onFilterChange,
   sort, onSortChange,
-  filtered, favorites, occupancy,
+  filtered, favorites, occupancy, distances,
   onSelect, onToggleFavorite,
 }) {
   return (
@@ -47,6 +47,7 @@ export default function HomePage({
               location={loc}
               isFavorite={favorites.includes(loc.id)}
               occupancy={occupancy[loc.id]}
+              distance={distances[loc.id]}
               onSelect={onSelect}
               onToggleFavorite={onToggleFavorite}
             />

@@ -11,6 +11,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&q=80",
     baseOccupancy: 62,
+    lat: 43.07551,
+    lng: -89.39661,
   },
   {
     id: 2,
@@ -24,6 +26,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&q=80",
     baseOccupancy: 48,
+    lat: 43.07676,
+    lng: -89.39945,
   },
   {
     id: 3,
@@ -37,6 +41,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
     baseOccupancy: 35,
+    lat: 43.07169,
+    lng: -89.40895,
   },
   {
     id: 4,
@@ -50,6 +56,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80",
     baseOccupancy: 71,
+    lat: 43.07228,
+    lng: -89.40769,
   },
   {
     id: 5,
@@ -63,6 +71,8 @@ export const LOCATIONS = [
     foodNearby: false,
     photo: "https://images.unsplash.com/photo-1568667256549-094345857637?w=600&q=80",
     baseOccupancy: 22,
+    lat: 43.07677,
+    lng: -89.41412,
   },
   {
     id: 6,
@@ -76,6 +86,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80",
     baseOccupancy: 29,
+    lat: 43.07302,
+    lng: -89.41282,
   },
   {
     id: 7,
@@ -89,6 +101,8 @@ export const LOCATIONS = [
     foodNearby: false,
     photo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80",
     baseOccupancy: 15,
+    lat: 43.08975,
+    lng: -89.42484,
   },
   {
     id: 8,
@@ -102,6 +116,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80",
     baseOccupancy: 55,
+    lat: 43.07258,
+    lng: -89.40656,
   },
   {
     id: 9,
@@ -115,6 +131,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&q=80",
     baseOccupancy: 40,
+    lat: 43.07295,
+    lng: -89.41318,
   },
   {
     id: 10,
@@ -128,6 +146,8 @@ export const LOCATIONS = [
     foodNearby: true,
     photo: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&q=80",
     baseOccupancy: 68,
+    lat: 43.07584,
+    lng: -89.39940,
   },
 ];
 

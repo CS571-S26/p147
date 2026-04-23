@@ -46,6 +46,17 @@ export default function AppNavBar({ favoriteCount }) {
             <Nav.Item as="li">
               <Nav.Link
                 as={NavLink}
+                to="/map"
+                className={({ isActive }) =>
+                  `${styles.link} ${isActive ? styles.active : ''}`
+                }
+              >
+                Map
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+              <Nav.Link
+                as={NavLink}
                 to="/about"
                 className={({ isActive }) =>
                   `${styles.link} ${isActive ? styles.active : ''}`
