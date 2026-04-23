@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button, Form, Badge } from 'react-bootstrap'
 import { AMENITY_LABELS, NOISE_LABELS } from '../data/locations'
 import OccupancyMeter from './OccupancyMeter'
 import styles from './LocationDetail.module.css'
@@ -31,7 +32,14 @@ export default function LocationDetail({
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-label={location.name}>
       <div className={styles.sheet}>
-        <button className={styles.closeBtn} onClick={onClose} aria-label="Close detail view">✕</button>
+        <Button
+          variant="light"
+          className={styles.closeBtn}
+          onClick={onClose}
+          aria-label="Close detail view"
+        >
+          ✕
+        </Button>
 
         <div className={styles.hero}>
           <img src={location.photo} alt={location.name} className={styles.heroImg} />
@@ -66,7 +74,9 @@ export default function LocationDetail({
             <h3 className={styles.sectionTitle}>Amenities</h3>
             <div className={styles.amenities}>
               {location.amenities.map(a => (
-                <span key={a} className={styles.tag}>{AMENITY_LABELS[a]}</span>
+                <Badge key={a} bg="secondary" className={styles.tag}>
+                  {AMENITY_LABELS[a]}
+                </Badge>
               ))}
             </div>
           </section>
@@ -79,21 +89,21 @@ export default function LocationDetail({
             </div>
             <div className={styles.checkInRow}>
               {checkedIn ? (
-                <button className={`${styles.actionBtn} ${styles.checkOutBtn}`} onClick={() => onCheckOut(location.id)}>
+                <Button variant="secondary" onClick={() => onCheckOut(location.id)}>
                   Check Out
-                </button>
+                </Button>
               ) : (
-                <button className={`${styles.actionBtn} ${styles.checkInBtn}`} onClick={() => onCheckIn(location.id)}>
+                <Button variant="danger" onClick={() => onCheckIn(location.id)}>
                   Check In Here
-                </button>
+                </Button>
               )}
-              <button
-                className={`${styles.actionBtn} ${styles.favBtn} ${isFavorite ? styles.favActive : ''}`}
+              <Button
+                variant={isFavorite ? 'outline-danger' : 'outline-secondary'}
                 onClick={() => onToggleFavorite(location.id)}
                 aria-pressed={isFavorite}
               >
                 {isFavorite ? '★ Saved' : '☆ Save'}
-              </button>
+              </Button>
             </div>
           </section>
 
@@ -101,20 +111,25 @@ export default function LocationDetail({
             <h3 className={styles.sectionTitle}>
               Comments <span className={styles.commentCount}>({comments.length})</span>
             </h3>
-            <form className={styles.commentForm} onSubmit={handleCommentSubmit} noValidate>
-              <textarea
-                className={`${styles.textarea} ${commentError ? styles.textareaError : ''}`}
+            <Form className={styles.commentForm} onSubmit={handleCommentSubmit} noValidate>
+              <Form.Control
+                as="textarea"
+                isInvalid={!!commentError}
                 value={commentText}
                 onChange={e => { setCommentText(e.target.value); setCommentError('') }}
                 placeholder="Leave a comment about this space…"
                 rows={3}
                 aria-label="Comment"
-                aria-invalid={!!commentError}
-                aria-describedby={commentError ? 'comment-error' : undefined}
               />
-              {commentError && <p id="comment-error" className={styles.errorMsg}>{commentError}</p>}
-              <button type="submit" className={styles.submitBtn}>Post Comment</button>
-            </form>
+              {commentError && (
+                <Form.Control.Feedback type="invalid" style={{ display: 'block' }}>
+                  {commentError}
+                </Form.Control.Feedback>
+              )}
+              <Button type="submit" variant="danger" size="sm" className="align-self-end">
+                Post Comment
+              </Button>
+            </Form>
 
             {comments.length === 0 ? (
               <p className={styles.emptyComments}>No comments yet. Be the first!</p>

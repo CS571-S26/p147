@@ -1,3 +1,4 @@
+import { Container, Button } from 'react-bootstrap'
 import SearchBar from './SearchBar'
 import FilterPanel from './FilterPanel'
 import LocationCard from './LocationCard'
@@ -11,7 +12,7 @@ export default function HomePage({
   onSelect, onToggleFavorite,
 }) {
   return (
-    <main className={styles.main}>
+    <Container as="main" className={styles.main}>
       <div className={styles.controls}>
         <SearchBar query={query} onChange={onQueryChange} />
       </div>
@@ -28,15 +29,15 @@ export default function HomePage({
         <div className={styles.empty}>
           <span className={styles.emptyIcon}>🔍</span>
           <p>No study spaces match your filters.</p>
-          <button
-            className={styles.emptyReset}
+          <Button
+            variant="danger"
             onClick={() => {
               onQueryChange('')
               onFilterChange({ noise: 'all', amenities: [], favoritesOnly: false })
             }}
           >
             Clear all filters
-          </button>
+          </Button>
         </div>
       ) : (
         <div className={styles.grid}>
@@ -52,6 +53,6 @@ export default function HomePage({
           ))}
         </div>
       )}
-    </main>
+    </Container>
   )
 }

@@ -1,3 +1,4 @@
+import { Form, Button } from 'react-bootstrap'
 import { AMENITY_LABELS } from '../data/locations'
 import styles from './FilterPanel.module.css'
 
@@ -28,8 +29,8 @@ export default function FilterPanel({ filters, onFilterChange, onSortChange, sor
     <aside className={styles.panel}>
       <div className={styles.row}>
         <div className={styles.field}>
-          <label className={styles.label} htmlFor="noise-filter">Noise Level</label>
-          <select
+          <Form.Label className={styles.label} htmlFor="noise-filter">Noise Level</Form.Label>
+          <Form.Select
             id="noise-filter"
             className={styles.select}
             value={filters.noise}
@@ -38,12 +39,12 @@ export default function FilterPanel({ filters, onFilterChange, onSortChange, sor
             {NOISE_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
             ))}
-          </select>
+          </Form.Select>
         </div>
 
         <div className={styles.field}>
-          <label className={styles.label} htmlFor="sort-select">Sort By</label>
-          <select
+          <Form.Label className={styles.label} htmlFor="sort-select">Sort By</Form.Label>
+          <Form.Select
             id="sort-select"
             className={styles.select}
             value={sort}
@@ -52,7 +53,7 @@ export default function FilterPanel({ filters, onFilterChange, onSortChange, sor
             {SORT_OPTIONS.map(o => (
               <option key={o.value} value={o.value}>{o.label}</option>
             ))}
-          </select>
+          </Form.Select>
         </div>
       </div>
 
@@ -60,37 +61,41 @@ export default function FilterPanel({ filters, onFilterChange, onSortChange, sor
         <span className={styles.label}>Amenities</span>
         <div className={styles.chips}>
           {Object.entries(AMENITY_LABELS).map(([key, label]) => (
-            <button
+            <Button
               key={key}
-              className={`${styles.chip} ${filters.amenities.includes(key) ? styles.chipActive : ''}`}
+              size="sm"
+              variant={filters.amenities.includes(key) ? 'danger' : 'outline-secondary'}
+              className={styles.chip}
               onClick={() => toggleAmenity(key)}
               aria-pressed={filters.amenities.includes(key)}
             >
               {label}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
 
       <div className={styles.footer}>
-        <label className={styles.checkLabel}>
-          <input
-            type="checkbox"
-            checked={filters.favoritesOnly}
-            onChange={e => onFilterChange({ ...filters, favoritesOnly: e.target.checked })}
-          />
-          Show favorites only
-        </label>
+        <Form.Check
+          type="checkbox"
+          id="favorites-only"
+          label="Show favorites only"
+          checked={filters.favoritesOnly}
+          onChange={e => onFilterChange({ ...filters, favoritesOnly: e.target.checked })}
+          className={styles.checkLabel}
+        />
 
         <div className={styles.meta}>
           <span className={styles.count}>{resultCount} space{resultCount !== 1 ? 's' : ''} found</span>
           {hasActiveFilters && (
-            <button
+            <Button
+              variant="link"
+              size="sm"
               className={styles.resetBtn}
               onClick={() => onFilterChange({ noise: 'all', amenities: [], favoritesOnly: false })}
             >
               Reset filters
-            </button>
+            </Button>
           )}
         </div>
       </div>
