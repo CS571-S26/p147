@@ -28,6 +28,6 @@
   white-space: nowrap;
 }
 
-.label.low { color: var(--green); }
-.label.medium { color: var(--amber); }
+.label.low { color: #15803d; }
+.label.medium { color: #92400e; }
 .label.high { color: var(--red); }
