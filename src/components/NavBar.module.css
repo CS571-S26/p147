@@ -8,8 +8,10 @@
   align-items: center;
   gap: 0.5rem;
   color: #fff !important;
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   text-decoration: none;
 }
 
@@ -34,9 +36,11 @@
 }
 
 .link {
-  color: rgba(255, 255, 255, 0.85) !important;
-  font-weight: 500;
-  font-size: 0.95rem;
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   padding: 0.5rem 0.85rem !important;
   border-radius: 6px;
   transition: color 0.12s, background 0.12s;
@@ -47,13 +51,15 @@
 
 .link:hover {
   color: #fff !important;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .active {
   color: #fff !important;
-  background: rgba(255, 255, 255, 0.18) !important;
-  font-weight: 700;
+  background: rgba(255, 255, 255, 0.22) !important;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .badge {
