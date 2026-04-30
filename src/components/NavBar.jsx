@@ -4,7 +4,7 @@ import styles from './NavBar.module.css'
 
 export default function AppNavBar({ favoriteCount }) {
   return (
-    <Navbar expand="md" sticky="top" className={styles.navbar}>
+    <Navbar expand="md" sticky="top" className={styles.navbar} data-bs-theme="dark">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className={styles.brand}>
           <span className={styles.logo}>📍</span>
