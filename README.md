@@ -1,6 +1,6 @@
-# StudySpotter — UW Study Space Finder
+# StudySpotter 
 
-A React web app that helps UW–Madison students quickly find a good place to study based on what they need right now.
+A React web app that helps students quickly find a good place to study based on what they need right now.
 
 **Live site:** https://cs571-s26.github.io/p147/
 
