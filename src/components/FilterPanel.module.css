@@ -46,6 +46,13 @@
   border-color: var(--red);
 }
 
+.selectActive {
+  border-color: var(--red);
+  background-color: #fff0f0;
+  color: var(--dark-red);
+  font-weight: 600;
+}
+
 .amenityRow {
   display: flex;
   flex-direction: column;

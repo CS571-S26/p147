@@ -32,7 +32,7 @@ export default function FilterPanel({ filters, onFilterChange, onSortChange, sor
           <Form.Label className={styles.label} htmlFor="noise-filter">Noise Level</Form.Label>
           <Form.Select
             id="noise-filter"
-            className={styles.select}
+            className={`${styles.select} ${filters.noise !== 'all' ? styles.selectActive : ''}`}
             value={filters.noise}
             onChange={e => onFilterChange({ ...filters, noise: e.target.value })}
           >
@@ -60,18 +60,21 @@ export default function FilterPanel({ filters, onFilterChange, onSortChange, sor
       <div className={styles.amenityRow}>
         <span className={styles.label}>Amenities</span>
         <div className={styles.chips}>
-          {Object.entries(AMENITY_LABELS).map(([key, label]) => (
-            <Button
-              key={key}
-              size="sm"
-              variant={filters.amenities.includes(key) ? 'danger' : 'outline-secondary'}
-              className={styles.chip}
-              onClick={() => toggleAmenity(key)}
-              aria-pressed={filters.amenities.includes(key)}
-            >
-              {label}
-            </Button>
-          ))}
+          {Object.entries(AMENITY_LABELS).map(([key, label]) => {
+            const active = filters.amenities.includes(key)
+            return (
+              <Button
+                key={key}
+                size="sm"
+                variant="outline-secondary"
+                className={`${styles.chip} ${active ? styles.chipActive : ''}`}
+                onClick={() => toggleAmenity(key)}
+                aria-pressed={active}
+              >
+                {label}
+              </Button>
+            )
+          })}
         </div>
       </div>
 
