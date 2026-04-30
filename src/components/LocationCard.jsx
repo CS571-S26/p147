@@ -8,7 +8,7 @@ const NOISE_ICON = { quiet: '🤫', moderate: '💬', collaborative: '🗣️' }
 export default function LocationCard({ location, isFavorite, occupancy, distance, onSelect, onToggleFavorite }) {
   return (
     <article className={styles.card} onClick={() => onSelect(location)} tabIndex={0}
-      onKeyDown={e => e.key === 'Enter' && onSelect(location)}
+      onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onSelect(location)}
       aria-label={`${location.name}, ${location.type}`}
     >
       <div className={styles.imgWrap}>

@@ -7,9 +7,9 @@ export default function FavoritesPage({ favoriteLocations, occupancy, onSelect, 
   return (
     <Container className={styles.page}>
       <div className={styles.header}>
-        <h2 className={styles.title}>
+        <h1 className={styles.title}>
           <span className={styles.icon}>★</span> Saved Spaces
-        </h2>
+        </h1>
         <p className={styles.subtitle}>
           {favoriteLocations.length === 0
             ? 'You haven\'t saved any spaces yet.'

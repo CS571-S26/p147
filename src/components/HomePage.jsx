@@ -13,6 +13,7 @@ export default function HomePage({
 }) {
   return (
     <Container as="main" className={styles.main}>
+      <h1 className={styles.pageTitle}>Explore Study Spaces</h1>
       <div className={styles.controls}>
         <SearchBar query={query} onChange={onQueryChange} />
       </div>

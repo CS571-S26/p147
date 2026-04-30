@@ -100,7 +100,7 @@ export default function MapPage({ occupancy, onSelect, favorites, onToggleFavori
 
       <aside className={styles.sidebar}>
         <div className={styles.sidebarHeader}>
-          <h2 className={styles.sidebarTitle}>Nearby Spaces</h2>
+          <h1 className={styles.sidebarTitle}>Nearby Spaces</h1>
           {geoError ? (
             <p className={styles.geoError}>📍 {geoError}</p>
           ) : !userPos ? (
@@ -120,7 +120,7 @@ export default function MapPage({ occupancy, onSelect, favorites, onToggleFavori
                 className={styles.listItem}
                 onClick={() => onSelect(loc)}
                 tabIndex={0}
-                onKeyDown={e => e.key === 'Enter' && onSelect(loc)}
+                onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onSelect(loc)}
               >
                 <div className={styles.itemTop}>
                   <div>
