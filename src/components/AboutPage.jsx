@@ -10,7 +10,7 @@ const FEATURES = [
   {
     icon: '📊',
     title: 'Live Occupancy',
-    desc: 'Check real-time occupancy estimates and check in to help others know how busy a space is.',
+    desc: 'Check real time occupancy estimates and check in to help others know how busy a space is.',
   },
   {
     icon: '★',
@@ -32,7 +32,7 @@ export default function AboutPage() {
         <h1 className={styles.heroTitle}>About StudySpotter</h1>
         <p className={styles.heroDesc}>
           StudySpotter helps UW–Madison students find the perfect place to study on campus.
-          Browse 10+ verified locations, check live occupancy, save your favorites, and share
+          Browse verified locations, check live occupancy, save your favorites, and share
           tips with the campus community.
         </p>
       </div>
@@ -58,8 +58,8 @@ export default function AboutPage() {
             <Card.Body>
               <Card.Title className={styles.infoTitle}>🎓 Built for Badgers</Card.Title>
               <Card.Text>
-                All locations are real UW–Madison study spaces — libraries, student unions, academic
-                buildings, and cafés — with accurate hours, amenity info, and addresses.
+                All locations are UW–Madison study spaces: libraries, student unions, academic
+                buildings, and cafés.
               </Card.Text>
             </Card.Body>
           </Card>
